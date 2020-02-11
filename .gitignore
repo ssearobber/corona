@@ -23,5 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 #자동배포
-appspec.yml
-execute-deploy.sh
+.appspec.yml
+.execute-deploy.sh
