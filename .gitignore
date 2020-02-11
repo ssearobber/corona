@@ -23,5 +23,10 @@ yarn-debug.log*
 yarn-error.log*
 
 #자동배포
-.appspec.yml
-.execute-deploy.sh
+appspec.yml
+execute-deploy.sh
+
+## 파일 이라면 
+git rm --cached appspec.yml
+git rm --cached execute-deploy.sh
+
