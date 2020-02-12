@@ -25,6 +25,7 @@ yarn-error.log*
 #자동배포
 appspec.yml
 execute-deploy.sh
+travis.yml
 
 ## 파일 이라면 
 git rm --cached appspec.yml
