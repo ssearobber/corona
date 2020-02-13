@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
-export default class SimpleExample extends Component {
+export default class CoronaMaker extends Component {
   state = {
-    lat: 51.505,
-    lng: -0.09,
+    lat: 35.469699,
+    lng: 139.629123,
     zoom: 13,
   };
 
@@ -18,7 +18,7 @@ export default class SimpleExample extends Component {
         />
         <Marker position={position}>
           <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
+            横浜集団感染 <br /> 15人
           </Popup>
         </Marker>
       </Map>
