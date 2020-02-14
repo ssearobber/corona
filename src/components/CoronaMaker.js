@@ -34,11 +34,16 @@ export default function CoronaMaker() {
           }}
           icon={icon}
         >
-          <Popup>こんにちは</Popup>
+          <Popup>
+            <div>
+              <h2>{park.properties.NAME}</h2>
+              <p>{park.properties.DESCRIPTIO}</p>
+            </div>
+          </Popup>
         </Marker>
       ))}
 
-      {activePark && (
+      {/* {activePark && (
         <Popup
           position={[activePark.geometry.coordinates[1], activePark.geometry.coordinates[0]]}
           anchor="bottom-right"
@@ -48,7 +53,7 @@ export default function CoronaMaker() {
             <p>{activePark.properties.DESCRIPTIO}</p>
           </div>
         </Popup>
-      )}
+      )} */}
     </Map>
   );
 }
