@@ -1,6 +1,5 @@
 import Leaflet from 'leaflet';
 import React, { Component } from 'react';
-import './App.css';
 import 'leaflet/dist/leaflet.css';
 import CoronaMaker from './components/CoronaMaker';
 

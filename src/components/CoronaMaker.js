@@ -1,27 +1,49 @@
-import React, { Component } from 'react';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import React from 'react';
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Icon } from 'leaflet';
+import * as CoronaData from './CoronaData.json';
+import './Corona.css';
 
-export default class CoronaMaker extends Component {
-  state = {
-    lat: 35.469699,
-    lng: 139.629123,
-    zoom: 13,
-  };
+export const icon = new Icon({
+  iconUrl: '/skateboarding.svg',
+  iconSize: [25, 25],
+});
 
-  render() {
-    const position = [this.state.lat, this.state.lng];
-    return (
-      <Map center={position} zoom={this.state.zoom}>
-        <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+export default function CoronaMaker() {
+  const [activePark, setActivePark] = React.useState(null);
+
+  return (
+    <Map center={[35.469699, 139.629123]} zoom={12}>
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      />
+
+      {CoronaData.features.map(park => (
+        <Marker
+          key={park.properties.PARK_ID}
+          position={[park.geometry.coordinates[1], park.geometry.coordinates[0]]}
+          onClick={() => {
+            setActivePark(park);
+          }}
+          // icon={icon}
         />
-        <Marker position={position}>
-          <Popup>
-            横浜集団感染 <br /> 15人
-          </Popup>
-        </Marker>
-      </Map>
-    );
-  }
+      ))}
+
+      {activePark && (
+        <Popup
+          position={[activePark.geometry.coordinates[1], activePark.geometry.coordinates[0]]}
+          anchor="bottom-right"
+          onClose={() => {
+            setActivePark(null);
+          }}
+        >
+          <div>
+            <h2>{activePark.properties.NAME}</h2>
+            <p>{activePark.properties.DESCRIPTIO}</p>
+          </div>
+        </Popup>
+      )}
+    </Map>
+  );
 }
