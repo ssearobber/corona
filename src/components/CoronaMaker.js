@@ -2,11 +2,13 @@ import React from 'react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import * as CoronaData from './CoronaData.json';
+import Legend from './LegendControl';
 import './Corona.css';
 
 export const icon = new Icon({
-  iconUrl: '/skateboarding.svg',
-  iconSize: [25, 25],
+  iconUrl:
+    'https://www.kk-bestsellers.com/mwimgs/f/e/640mn/img_fe85d2be439b73f88156e2c164bfbc563646039.jpg',
+  iconSize: [100, 100],
 });
 
 export default function CoronaMaker() {
@@ -18,6 +20,7 @@ export default function CoronaMaker() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
+      <Legend />
 
       {CoronaData.features.map(park => (
         <Marker
@@ -26,7 +29,7 @@ export default function CoronaMaker() {
           onClick={() => {
             setActivePark(park);
           }}
-          // icon={icon}
+          icon={icon}
         />
       ))}
 
