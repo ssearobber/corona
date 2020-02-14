@@ -26,20 +26,22 @@ export default function CoronaMaker() {
         <Marker
           key={park.properties.PARK_ID}
           position={[park.geometry.coordinates[1], park.geometry.coordinates[0]]}
-          onClick={() => {
-            setActivePark(park);
+          onMouseOver={e => {
+            e.target.openPopup();
+          }}
+          onMouseOut={e => {
+            e.target.closePopup();
           }}
           icon={icon}
-        />
+        >
+          <Popup>こんにちは</Popup>
+        </Marker>
       ))}
 
       {activePark && (
         <Popup
           position={[activePark.geometry.coordinates[1], activePark.geometry.coordinates[0]]}
           anchor="bottom-right"
-          onClose={() => {
-            setActivePark(null);
-          }}
         >
           <div>
             <h2>{activePark.properties.NAME}</h2>
