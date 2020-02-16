@@ -1,6 +1,6 @@
 import React from 'react';
-import { Map, CircleMarker, Popup, TileLayer } from 'react-leaflet';
-import { Icon } from 'leaflet';
+import { Map, CircleMarker, Popup, TileLayer, Polyline } from 'react-leaflet';
+import { Icon, Marker } from 'leaflet';
 import * as CoronaData from './CoronaData.json';
 import Legend from './LegendControl';
 import './Corona.css';
@@ -47,6 +47,14 @@ export default function CoronaMaker() {
           </Popup>
         </CircleMarker>
       ))}
+
+      <Polyline
+        positions={[
+          [35.469699, 139.629123],
+          [35.469711, 139.666661],
+        ]}
+        color="red"
+      />
 
       {/* {activePark && (
         <Popup
