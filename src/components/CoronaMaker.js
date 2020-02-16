@@ -1,5 +1,5 @@
 import React from 'react';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Map, CircleMarker, Popup, TileLayer } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import * as CoronaData from './CoronaData.json';
 import Legend from './LegendControl';
@@ -21,18 +21,23 @@ export default function CoronaMaker() {
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
       <Legend />
+      <Legend />
+      <Legend />
 
       {CoronaData.features.map(park => (
-        <Marker
+        <CircleMarker
           key={park.properties.PARK_ID}
-          position={[park.geometry.coordinates[1], park.geometry.coordinates[0]]}
+          center={[park.geometry.coordinates[1], park.geometry.coordinates[0]]}
           onMouseOver={e => {
             e.target.openPopup();
           }}
           onMouseOut={e => {
             e.target.closePopup();
           }}
-          icon={icon}
+          radius={20}
+          fill="true"
+          color="red"
+          // icon={icon}
         >
           <Popup>
             <div>
@@ -40,7 +45,7 @@ export default function CoronaMaker() {
               <p>{park.properties.DESCRIPTIO}</p>
             </div>
           </Popup>
-        </Marker>
+        </CircleMarker>
       ))}
 
       {/* {activePark && (
