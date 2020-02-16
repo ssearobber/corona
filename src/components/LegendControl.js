@@ -9,18 +9,6 @@ const Legend = () => {
     <div className="leaflet-top leaflet-right">
       <div className="info legend leaflet-control">
         <i>
-          <strong>日本全体</strong>
-        </i>
-        <br />
-        <br />
-        <i>確診者 : 53人</i>
-        <br />
-        <i>死亡者 : 1人</i>
-        <br />
-        <i>完治 : 12人</i>
-      </div>
-      <div className="info legend leaflet-control">
-        <i>
           <strong>横浜のクルーズ船</strong>
         </i>
         <br />
@@ -32,6 +20,18 @@ const Legend = () => {
         <i>死亡者 : 0人</i>
         <br />
         <i>完治 : 0人</i>
+      </div>
+      <div className="info legend leaflet-control">
+        <i>
+          <strong>日本全体</strong>
+        </i>
+        <br />
+        <br />
+        <i>確診者 : 53人</i>
+        <br />
+        <i>死亡者 : 1人</i>
+        <br />
+        <i>完治 : 12人</i>
       </div>
     </div>
   );
